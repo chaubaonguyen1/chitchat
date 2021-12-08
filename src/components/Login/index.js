@@ -8,11 +8,30 @@ import { addDocument, generateKeywords } from '../../firebase/service'
 const {Title} = Typography
 
 const fbProvider = new firebase.auth.FacebookAuthProvider()
+const googleProvider = new firebase.auth.GoogleAuthProvider();
+
+
 export default function Login() {
     const Navigate = useNavigate()
     const {user} = useContext(AuthContext)
     const handleFbLogin = async () => { 
         const {additionalUserInfo, user} = await auth.signInWithPopup(fbProvider)
+       
+        if(additionalUserInfo?.isNewUser) {
+           addDocument('users', {
+            displayName: user.displayName,
+            email: user.email,
+            photo: user.photoURL,
+            uid: user.uid,
+            providerId: additionalUserInfo.providerId,
+            keywords: generateKeywords(user.displayName)
+           })
+        }
+        Navigate("/")
+    }
+
+    const handleGoogleLogin = async () => { 
+        const {additionalUserInfo, user} = await auth.signInWithPopup(googleProvider)
        
         if(additionalUserInfo?.isNewUser) {
            addDocument('users', {
@@ -41,7 +60,7 @@ export default function Login() {
                     <Button style={{width: '100%', marginBottom: 5}} onClick={handleFbLogin}>
                         Login with Facebook
                     </Button>
-                    <Button style={{width: '100%'}}>
+                    <Button style={{width: '100%'}} onClick={handleGoogleLogin}>
                         Login with Google
                     </Button>
                 </Col>
