@@ -115,7 +115,7 @@ export default function ChatWindow() {
             {
                 selectedRoom.id ? (
                     <>
-                        <WrapperStyled>
+        <WrapperStyled>
             <HeaderStyled>
                 <div className="header__info">
                     <p className="header__title">{selectedRoom.name}</p>
@@ -156,11 +156,16 @@ export default function ChatWindow() {
                                     createdAt={mes.createdAt}
                                 />
                             </div>
-                                )
+                        )
                     }
                 </MessageListStyled>
                 <FormStyled form={form}>
-                 <InputMessage  name="message" ref={inputValue} callback={handleOnSubmit}  placeholder="Enter message" />
+                 <InputMessage 
+                    name="message" 
+                    ref={inputValue} 
+                    callback={handleOnSubmit} 
+                    placeholder="Enter message" 
+                    />
                     <Button type="primary" onClick={handleOnSubmit}>Send</Button>
                 </FormStyled>
             </ContentStyled>

@@ -1,7 +1,7 @@
 import { Input, Form } from 'antd'
-import React, { useState } from 'react'
+import { useState, forwardRef } from 'react'
 
-const InputMessage = ({name,placeholder, callback}, ref) => {
+const InputMessage = ({name, placeholder, callback}, ref) => {
     const [text,setText] =  useState("")
     const handleInputChange = (e) => {
         setText(e.target.value)
@@ -16,19 +16,19 @@ const InputMessage = ({name,placeholder, callback}, ref) => {
   
     return (
         <Form.Item >
-                        <Input
-                        name={name}
-                        bordered={false}
-                        value={text}
-                        autoComplete="off"
-                        placeholder={placeholder}
-                        onChange={handleInputChange}
-                        onPressEnter={handleCallback}
-                        autoFocus
-                        />
-                        <input type="hidden"  value={text} ref={ref} />
-                    </Form.Item>
+            <Input
+                name={name}
+                bordered={false}
+                value={text}
+                autoComplete="off"
+                placeholder={placeholder}
+                onChange={handleInputChange}
+                onPressEnter={handleCallback}
+                autoFocus
+            />
+            <input type="hidden"  value={text} ref={ref} />
+        </Form.Item>
     )
 }
 
-export default React.forwardRef(InputMessage)
+export default forwardRef(InputMessage)
