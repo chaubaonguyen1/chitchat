@@ -1,10 +1,10 @@
-import React, { useContext, useEffect } from "react";
-import {Button, Avatar, Typography} from 'antd'
-import styled from "styled-components";
-
-import {auth, db} from '../../firebase/config'
-import { AuthContext } from '../../Context/AuthProvider'
+import { Avatar, Button, Typography } from 'antd';
+import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
+import { AuthContext } from '../../Context/AuthProvider';
+import { auth } from '../../firebase/config';
+
 
 const WrapperStyled = styled.div`
     display:flex;

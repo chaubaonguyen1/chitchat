@@ -1,15 +1,14 @@
 //24:08
 import { UserAddOutlined } from '@ant-design/icons'
-import { Avatar, Tooltip, Button, Form, Input, Alert } from 'antd'
-import {useContext, useState, useMemo, useRef, useEffect} from 'react'
+import { Alert, Avatar, Button, Form, Tooltip } from 'antd'
+import { useContext, useEffect, useMemo, useRef } from 'react'
 import styled from 'styled-components'
-import Message from './Message'
 import { AppContext } from '../../Context/AppProvider'
-import { addDocument } from '../../firebase/service'
 import { AuthContext } from '../../Context/AuthProvider'
+import { addDocument } from '../../firebase/service'
 import useFirestore from '../../hooks/useFirestore'
 import InputMessage from './InputMessage'
-import ReactDOM from 'react-dom';
+import Message from './Message'
 const ButtonGroupStyled = styled.div`
     display: flex;
     align-items: center;

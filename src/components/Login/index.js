@@ -1,9 +1,9 @@
+import { Button, Col, Row, Typography } from 'antd'
 import React, { useContext, useEffect } from 'react'
-import {Row, Col, Button, Typography} from 'antd'
-import firebase, { auth, db } from '../../firebase/config'
-import { addDocument, generateKeywords } from '../../firebase/service'
 import { useNavigate } from 'react-router'
 import { AuthContext } from '../../Context/AuthProvider'
+import firebase, { auth } from '../../firebase/config'
+import { addDocument, generateKeywords } from '../../firebase/service'
 
 const {Title} = Typography
 
@@ -31,7 +31,7 @@ export default function Login() {
         if(user) {
            Navigate('/')
         }
-    },[user])
+    },[user,Navigate])
     
     return (
         <div>

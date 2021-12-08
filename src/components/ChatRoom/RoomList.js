@@ -27,7 +27,7 @@ const LinkStyled = styled(Typography.Link)`
 
 
 export default function Roomlist() {
-    const {rooms, setIsAddRoomVisible, setSelectedRoomId,selectedRoomId} = useContext(AppContext)
+    const {rooms, setIsAddRoomVisible, setSelectedRoomId} = useContext(AppContext)
     
     const handleAddRoom = () => {
         setIsAddRoomVisible(true)

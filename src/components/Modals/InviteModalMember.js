@@ -1,8 +1,7 @@
-import {Modal, Form, Select, Spin, Avatar} from 'antd'
-import { useContext, useState, useMemo } from 'react'
-import { AppContext } from '../../Context/AppProvider'
-import { AuthContext } from '../../Context/AuthProvider'
+import { Avatar, Form, Modal, Select, Spin } from 'antd'
 import { debounce } from 'lodash'
+import { useContext, useMemo, useState } from 'react'
+import { AppContext } from '../../Context/AppProvider'
 import { db } from '../../firebase/config'
 
 function DebounceSelect({fetchOptions, debounceTimeout = 300, ...props}) {
@@ -22,7 +21,7 @@ function DebounceSelect({fetchOptions, debounceTimeout = 300, ...props}) {
             })
         }
         return debounce(loadOptions, debounceTimeout)
-    }, [debounceTimeout, fetchOptions])
+    }, [debounceTimeout, fetchOptions,props.currentMembers])
     return (
         <Select
             labelInValue
@@ -61,9 +60,7 @@ async function fetchUserList(search, currentMembers) {
 export default function InviteMemberModal() {
     const {isInviteMemberVisible, setIsInviteMemberVisible, selectedRoomId, selectedRoom} = useContext(AppContext)
     const [value, setValue] = useState([])
-    const user = useContext(AuthContext)
-
-    const {uid} = user;
+   
    
     const [form] = Form.useForm()
     const handleOk = () => {
